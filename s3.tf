@@ -1,5 +1,4 @@
 resource "aws_s3_bucket" "main" {
-  provider = aws.main
   bucket   = var.fqdn
   acl      = "private"
   policy   = data.aws_iam_policy_document.bucket_policy.json
@@ -21,7 +20,6 @@ resource "aws_s3_bucket" "main" {
 }
 
 data "aws_iam_policy_document" "bucket_policy" {
-  provider = aws.main
 
   statement {
     sid = "AllowedIPReadAccess"
